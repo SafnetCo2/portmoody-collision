@@ -1,38 +1,686 @@
-.App {
+/* ================== RESET & GLOBAL STYLES ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f6fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+  color: #f39c12;
+}
+
+/* ================== HERO SECTION ================== */
+/* ================== HERO SECTION ================== */
+.hero {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  text-align: center;      /* Center text */
+  min-height: 90vh;        /* Full viewport height */
+  color: #fff;
+  gap: 2rem;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Optional overlay for better text contrast */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent black overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative; /* To stay above overlay */
+  z-index: 2;
+  max-width: 800px; /* prevent text from stretching too wide */
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content h2 {
+  font-size: 1.8rem;
+  color: #f39c12;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content .btn {
+  padding: 0.9rem 2rem;
+  background: #f39c12;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero-content .btn:hover {
+  background: #d9820f;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem;
+  }
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  .hero-content h2 {
+    font-size: 1.3rem;
+  }
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+  .hero-content h2 {
+    font-size: 1.1rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+  .hero-content .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ================== ABOUT SECTION ================== */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  background: #fff;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-text h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-text h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.about-text h3 {
+  font-size: 1.3rem;
+  color: #f39c12;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 600px;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-text, .about-image {
+    max-width: 100%;
+  }
+  .about-text h1 {
+    font-size: 1.8rem;
+  }
+  .about-text h2 {
+    font-size: 1.5rem;
+  }
+  .about-text h3 {
+    font-size: 1.2rem;
+  }
+  .about-text p {
+    font-size: 1rem;
+  }
+}
+/* ================== SERVICES SECTION ================== */
+.services {
+  padding: 4rem 2rem;
+  background: #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.services h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.service-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-card h3 {
+  margin: 1rem 0;
+}
+
+.service-card p {
+  padding: 0 1rem 1rem;
+}
+
+/* ================== GALLERY SECTION ================== */
+.gallery {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ================== CONTACT SECTION ================== */
+.contact {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.contact form input:focus,
+.contact form textarea:focus {
+  border-color: #f39c12;
+  outline: none;
+}
+
+.contact form button {
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact form button:hover {
+  background: #d9820f;
+}
+
+/* ================== BOOKING PAGE ================== */
+.booking-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.booking-page h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.booking-page form {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-page input,
+.booking-page textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.booking-page input:focus,
+.booking-page textarea:focus {
+  border-color: #f39c12;
+  outline: none;
+}
+
+.booking-page textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #d9820f;
+}
+
+/* ================== FOOTER ================== */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* ================== CHATBOT ================== */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.App-link {
-  color: #61dafb;
+.chatbot-toggle:hover {
+  background: #d9820f;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.chatbot-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  max-height: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.chatbot-header {
+  background: #f39c12;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.chatbot-header .close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.chatbot-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message.user .message-text {
+  background: #ddd;
+  color: #000;
+  text-align: right;
+}
+
+.message.bot .message-text {
+  background: #f39c12;
+  color: #fff;
+  text-align: left;
+}
+
+.message-text {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.chatbot-footer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.chatbot-footer input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.chatbot-footer button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  background: #f39c12;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chatbot-footer button:hover {
+  background: #d9820f;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  .hero-image {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .booking-page {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+  .hero-content .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .gallery-grid img,
+  .services-grid .service-card img {
+    height: 150px;
+  }
+  .chatbot-window {
+    width: 90%;
+    right: 5%;
+    bottom: 80px;
+  }
+  .booking-page input,
+  .booking-page textarea,
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+}
+/* ================== TESTIMONIALS SECTION ================== */
+.testimonials {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+/* List of testimonials */
+.testimonials-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Individual testimonial block */
+.testimonials-list blockquote {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  font-style: italic;
+  color: #555;
+  transition: transform 0.3s;
+}
+
+.testimonials-list blockquote:hover {
+  transform: translateY(-5px);
+}
+
+.testimonials-list blockquote p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.testimonials-list blockquote footer {
+  font-weight: bold;
+  color: #222;
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimonials h2 {
+    font-size: 1.8rem;
+  }
+
+  .testimonials-list blockquote p {
+    font-size: 1rem;
+  }
+
+  .testimonials-list blockquote footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials {
+    padding: 3rem 1rem;
+  }
+
+  .testimonials h2 {
+    font-size: 1.5rem;
+  }
+
+  .testimonials-list blockquote {
+    padding: 1rem;
   }
 }
